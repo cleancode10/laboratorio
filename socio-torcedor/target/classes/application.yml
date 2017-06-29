@@ -1,0 +1,54 @@
+spring:
+    application:
+        name: socio-service
+        
+    eureka:
+        client:
+            serviceUrl:
+              defaultZone: http://localhost:8761/eureka
+        
+    jpa:
+        generate-ddl: true
+        show-sql: true
+        
+    profiles:
+        active: dev
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: true
+    jackson:
+      serialization.WRITE_DATES_AS_TIMESTAMPS: false
+    h2:
+      console:
+        enabled: true
+        path: /h2-console
+        
+server:
+    port: ${port}
+    
+    
+clubeservice:
+  ribbon:
+    MaxAutoRetries: 2
+    MaxAutoRetriesNextServer: 2
+    OkToRetryOnAllOperations: true
+    ServerListRefreshInterval: 2000
+    ConnectTimeout: 5000
+    ReadTimeout: 90000
+    EnableZoneAffinity: false
+    DeploymentContextBasedVipAddresses: clube-service
+    NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList    
+    
+campanhaservice:
+  ribbon:
+    MaxAutoRetries: 2
+    MaxAutoRetriesNextServer: 2
+    OkToRetryOnAllOperations: true
+    ServerListRefreshInterval: 2000
+    ConnectTimeout: 5000
+    ReadTimeout: 90000
+    EnableZoneAffinity: false
+    DeploymentContextBasedVipAddresses: campanha-service
+    NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList

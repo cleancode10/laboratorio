@@ -1,0 +1,29 @@
+spring:
+    application:
+        name: campanha-service
+
+    eureka:
+        client:
+            serviceUrl:
+              defaultZone: http://localhost:8761/eureka
+        
+    jpa:
+        generate-ddl: true
+        show-sql: true
+        
+    profiles:
+        active: dev
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: true
+    jackson:
+      serialization.WRITE_DATES_AS_TIMESTAMPS: false
+    h2:
+      console:
+        enabled: true
+        path: /h2-console
+        
+server:
+    port: ${port}
